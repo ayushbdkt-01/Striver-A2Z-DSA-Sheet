@@ -22,6 +22,7 @@ void brute(int a[],int n){
 
 void optimized(int a[],int n){
     // j stores the index of the first zero-index. traverse the array and if any non-zero element is found, swap it with the a[j] as a[j]==0 and increment j.
+     // i at non-zero and j at zero element.
     int j=0;
     for(int i=0;i<n;i++){
         if(a[i]==0){
