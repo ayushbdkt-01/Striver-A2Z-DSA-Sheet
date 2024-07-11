@@ -25,7 +25,7 @@ void better(int arr[],int n,int target){
         if(m.find(b)!=m.end()){
             cout<<"Target at: "<<i<<" and "<<m[b]<<endl;
         }
-        m[a]=i;
+        m[arr[i]]=i;
     }
     cout<<endl;
 }
