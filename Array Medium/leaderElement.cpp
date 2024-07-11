@@ -10,6 +10,7 @@ void brute(int a[],int n){
         for(int j=i+1;j<n;j++){
             if(a[i]<a[j]){
                 leader=false;
+                break;
             }
         }
         if(leader==true){
