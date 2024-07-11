@@ -22,7 +22,7 @@ void brute(int a[],int n,int k){
 
 void optimized(int a[],int n,int k){
     // divide the array into two parts of size k and n-k. Reverse both the array seperately. Then reverse the whole array.
-
+    k=k%n;
     reverse(a,a+k);
     reverse(a+k,a+n);
     reverse(a,a+n);
