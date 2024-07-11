@@ -36,9 +36,9 @@ void better(int a[],int n){
 
 void optimized(int a[],int n){
     // Kadane's Algorithm = maxSum store the maximmum sum ever found and if sum becomes -ve, make the sum as zero.
-    int maxSum=0;
-    int sum=0;
-    for(int i=0;i<n;i++){
+    int maxSum=a[0];
+    int sum=a[0];
+    for(int i=1;i<n;i++){
         sum=sum+a[i];
         maxSum=max(sum,maxSum);
         if(sum<0){
