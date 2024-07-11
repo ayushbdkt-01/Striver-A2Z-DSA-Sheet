@@ -19,14 +19,14 @@ void brute(int a[],int n){
 int optimized(int a[],int n){
     // i counts the unique elements in the array. if a[i]!=a[j], then increment i and update a[i] for the next iteration.
     sort(a,a+n);
-    int i=1;
+    int i=0;
     for(int j=1;j<n;j++){
         if(a[j]!=a[i]){
             i++;
             a[i]=a[j];
         }
     }
-    return i;
+    return i+1;
 }
 
 
