@@ -40,6 +40,7 @@ void better(int a[],int n,int target){
 
 void better2(int a[],int n,int target){
     // uses hashing to store the prefixSum and if sum==target, update the maxLen and if not, insert the <sum,length> in the map for future use.
+    // +ve, -ve and zeros.
     map<int,int> prefixSumMap;
     int sum=0;
     int maxLen=0;
@@ -60,10 +61,22 @@ void better2(int a[],int n,int target){
 
 
 
-
 void optimized(int a[],int n,int target){
-    cout<<"Smajh nhii aya ...bad m krunga. ";
-    cout<<"Uses concept of prefix Sum"<<endl;
+    // greedy and two-pointer approach. Find the sum to right, if sum==target, then update the maxLen, if sum>target,then decrement the sum from the left.
+    // only +ve and zeros.
+    int left=0,right=0;
+    int maxLen=0;
+    int sum=a[0];
+    while(right<n){
+        while(left<right && sum>target){
+            sum -= a[left];
+            left++;
+        }
+        if(sum==target)  maxLen=max(maxLen,right-left+1);
+        right++;
+        if(right<n)  sum += a[right];
+    }
+    cout<<"Maximum Length: "<<maxLen<<endl;
 }
 
 
@@ -79,6 +92,7 @@ int main(){
     better(a,n,target);
     better2(a,n,target);
     optimized(a,n,target);
-    
+    myOptimized(a,n,target);
+
     return 0;
 }
