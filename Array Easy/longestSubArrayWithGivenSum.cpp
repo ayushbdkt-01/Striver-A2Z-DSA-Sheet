@@ -22,6 +22,7 @@ void brute(int a[],int n,int target){
 
 
 void better(int a[],int n,int target){
+     // generate all sub-arrays and store the length of the maximum sub-array.
     int len=0;
     for(int i=0;i<n;i++){
         int sum=0;
@@ -33,6 +34,28 @@ void better(int a[],int n,int target){
         }
     }
     cout<<"Maximum Length: "<<len<<endl;
+}
+
+
+
+void better2(int a[],int n,int target){
+    // uses hashing to store the prefixSum and if sum==target, update the maxLen and if not, insert the <sum,length> in the map for future use.
+    map<int,int> prefixSumMap;
+    int sum=0;
+    int maxLen=0;
+    for(int i=0;i<n;i++){
+        sum += a[i];
+        if(sum==target)
+            maxLen=max(maxLen,i+1);
+        int remainingSum=sum-target;
+        if(prefixSumMap.find(remainingSum) != prefixSumMap.end()){
+            int len=i-prefixSumMap[remainingSum];
+            maxLen=max(maxLen,len);
+        }
+        if(prefixSumMap.find(sum) == prefixSumMap.end())
+            prefixSumMap[sum]=i;
+    }
+    cout<<"Maximum Length: "<<maxLen<<endl;
 }
 
 
@@ -54,6 +77,8 @@ int main(){
 
     brute(a,n,target);
     better(a,n,target);
+    better2(a,n,target);
     optimized(a,n,target);
+    
     return 0;
 }
